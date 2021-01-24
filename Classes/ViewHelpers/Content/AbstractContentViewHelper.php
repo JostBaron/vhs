@@ -147,10 +147,10 @@ abstract class AbstractContentViewHelper extends AbstractViewHelper
 
         $conditions = '1=1';
         if (is_numeric($this->arguments['column'])) {
-            $conditions = sprintf('colPos = %d', (integer) $this->arguments['column']);
+            $conditions = sprintf('"tt_content"."colPos" = %d', (integer) $this->arguments['column']);
         }
         if (true === (boolean) $this->arguments['sectionIndexOnly']) {
-            $conditions .= ' AND sectionIndex = 1';
+            $conditions .= ' AND "tt_content"."sectionIndex" = 1';
         }
 
         $rows = $GLOBALS['TSFE']->cObj->getRecords(
